@@ -1,4 +1,5 @@
 var spawn = require('child_process').spawn;
+var spawnargs = require('spawn-args');
 var gulp = require('gulp');
 var bump = require('gulp-bump');
 var util = require('gulp-util');
@@ -23,8 +24,8 @@ function exec(cmds, cb) {
     if (cmds.length === 0) {
         return cb();
     }
-    var cmd = cmds.shift().split(/\s+/);
-    var proc = spawn(cmd.shift(), cmd, {
+    var args = spawnargs(cmds.shift());
+    var proc = spawn(args.shift(), args, {
         cwd: process.cwd()
     });
     proc.stdout.pipe(process.stdout);
