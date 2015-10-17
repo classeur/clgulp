@@ -1,0 +1,24 @@
+{
+  "name": "clgulp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "clgulp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/classeur/clgulp.git"
+  },
+  "author": "Benoit Schweblin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/classeur/clgulp/issues"
+  },
+  "homepage": "https://github.com/classeur/clgulp#readme",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bump": "^1.0.0",
+    "gulp-util": "^3.0.6"
+  }
+}
