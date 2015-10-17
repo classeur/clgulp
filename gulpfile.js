@@ -1,5 +1,6 @@
+var gulp = require('gulp');
 var clgulp = require('./');
-var gulp = clgulp.gulp;
+var gulp = clgulp(gulp);
 var exec = clgulp.exec;
 var util = clgulp.util;
 
