@@ -29,10 +29,19 @@ function exec(cmds, cb) {
 	if (cmds.length === 0) {
 		return cb();
 	}
-	var args = spawnargs(cmds.shift());
-	var proc = spawn(args.shift(), args, {
+	var file, args, command = cmds.shift(), options = {
 		cwd: process.cwd()
-	});
+	};
+	// Credit: https://github.com/nodejs/node/blob/master/lib/child_process.js
+	if (process.platform === 'win32') {
+		file = process.env.comspec || 'cmd.exe';
+		args = ['/s', '/c', '"' + command + '"'];
+		options.windowsVerbatimArguments = true;
+	} else {
+		file = '/bin/sh';
+		args = ['-c', command];
+	}
+	var proc = spawn(file, args, options);
 	proc.stdout.pipe(process.stdout);
 	proc.stderr.pipe(process.stderr);
 	proc.on('error', function(error) {
