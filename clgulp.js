@@ -23,6 +23,9 @@ module.exports = function(gulp) {
 };
 
 function exec(cmds, cb) {
+	if (!(cmds instanceof Array)) {
+		cmds = [cmds];
+	}
 	if (cmds.length === 0) {
 		return cb();
 	}
