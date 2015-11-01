@@ -22,16 +22,21 @@ module.exports = function(gulp) {
 	return gulp;
 };
 
-function exec(cmds, cb) {
+function exec(cmds, options, cb) {
+	if(cb === undefined) {
+		cb = options;
+		options = {};
+	}
 	if (!(cmds instanceof Array)) {
 		cmds = [cmds];
 	}
 	if (cmds.length === 0) {
 		return cb();
 	}
-	var file, args, command = cmds.shift(), options = {
+	var file, args, command = cmds.shift();
+	options = require('util')._extend({
 		cwd: process.cwd()
-	};
+	}, options);
 	// Credit: https://github.com/nodejs/node/blob/master/lib/child_process.js
 	if (process.platform === 'win32') {
 		file = process.env.comspec || 'cmd.exe';
