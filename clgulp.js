@@ -1,5 +1,4 @@
 var spawn = require('child_process').spawn;
-var spawnargs = require('spawn-args');
 var bump = require('gulp-bump');
 var util = require('gulp-util');
 
