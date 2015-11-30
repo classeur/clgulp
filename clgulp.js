@@ -5,7 +5,7 @@ var eslint = require('gulp-eslint')
 
 module.exports = function(gulp) {
 	gulp.task('lint', function() {
-		return gulp.src(['**/*.js', '!node_modules/**'])
+		return gulp.src(['**/*.js', '!node_modules/**', '!dist/**', '!**/*-min.js'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError())
